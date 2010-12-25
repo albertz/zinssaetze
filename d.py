@@ -2,6 +2,8 @@
 
 # Python Dokumentation:
 # http://docs.python.org/index.html
+# Exceptions und try/except: http://docs.python.org/reference/executionmodel.html#exceptions
+# Function definition: http://docs.python.org/reference/compound_stmts.html#function-definitions
 
 # http://docs.python.org/library/datetime.html
 from datetime import *
@@ -38,6 +40,7 @@ def userinput(text, convfn, default = None):
 			if s == "" and default != None: s = default
 			c = convfn(s)
 			cache[text] = s
+			# repr: http://docs.python.org/library/functions.html#repr
 			open(cachefn, "w").write(repr(cache))
 			return c
 		except KeyboardInterrupt:
