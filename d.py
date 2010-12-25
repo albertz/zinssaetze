@@ -66,6 +66,8 @@ def strtobool(s):
 def inccreaseyears(d, c = 1):
 	return date(d.year + c, d.month, d.day)
 
+# Wegen dem 'yield' ist das ein Generator, also ein Iterator.
+# http://docs.python.org/library/stdtypes.html#generator-types
 def iterdaymonth(start, end, daymonth):
 	currentdaymonth = date(start.year, daymonth[0], daymonth[1])
 	if currentdaymonth < start: currentdaymonth = inccreaseyears(currentdaymonth)
@@ -73,9 +75,9 @@ def iterdaymonth(start, end, daymonth):
 		yield currentdaymonth
 		currentdaymonth = inccreaseyears(currentdaymonth)
 
-def count(iter):
+def count(iterator):
 	c = 0
-	for i in iter: c += 1
+	for i in iterator: c += 1
 	return c
 	
 def countdaymonth(start, end, daymonth):
