@@ -7,6 +7,7 @@
 from datetime import *
 
 # decimal.Decimal ist wie float, aber exakte Nachkommastellen im Dezimalsystem
+# Standardtypen (int, float, str, ...): http://docs.python.org/library/stdtypes.html
 from decimal import *
 decimal = Decimal
 
