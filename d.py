@@ -1,16 +1,30 @@
 #!/usr/bin/python
 
+# Python Dokumentation:
+# http://docs.python.org/index.html
+
+# http://docs.python.org/library/datetime.html
 from datetime import *
+
+# decimal.Decimal ist wie float, aber exakte Nachkommastellen im Dezimalsystem
 from decimal import *
 decimal = Decimal
+
+# http://docs.python.org/library/re.html
+# http://docs.python.org/library/sys.html
 import re, sys
-from math import log
+
 
 def userinput(text, convfn, default = None):
+	# __file__ ist der Dateiname vom Skript. (also z.B. "d.py")
 	cachefn = __file__ + ".cache"
 	try:
+		# eval: http://docs.python.org/library/functions.html#eval
+		# open: http://docs.python.org/library/functions.html#open
 		cache = eval(open(cachefn).read())
 	except:
+		# {} gibt ein leeres dictionary.
+		# http://docs.python.org/library/stdtypes.html#mapping-types-dict
 		cache = {}
 	if text in cache: default = cache[text]
 	while True:
@@ -33,11 +47,13 @@ def userinput(text, convfn, default = None):
 
 def strtodate(s):
 	m = re.match("^([0-9]+) +([0-9]+) +([0-9]+)$", s)
+	if not m: raise Exception, repr(s) + " is not a date. expected 'year month day'"
 	year, month, day = m.groups()
 	return date(int(year), int(month), int(day))
 
 def strtodaymonth(s):
 	m = re.match("^([0-9]+) +([0-9]+)$", s)
+	if not m: raise Exception, repr(s) + " is wrong. expected 'month day'"
 	month, day = m.groups()
 	return int(month), int(day)
 
